@@ -21,13 +21,14 @@ def post_id_edit(input_wall):
     all_items = input_wall["items"]
     element = all_items[0]
     if id_post == int(element["id"]):
+        bot.send_message(chat_id=MY_CHANNEL_ID, text="Новых постов не обнаружено")
         return
     else:
         id_post = int(element["id"])
 
 
 def infinity_loop():
-    input_wall = vk.wall.search(owner_id=group_id, query='ремонт', count=5)
+    input_wall = vk.wall.search(owner_id=group_id, query='ремонт, сломался', count=5)
     all_items = input_wall["items"]
     x = 0
     for element in all_items:
@@ -44,4 +45,4 @@ if __name__ == '__main__':
     bot.send_message(chat_id=MY_CHANNEL_ID, text="Приветствую мастер, бот запущен.")
     while True:
         infinity_loop()
-        time.sleep(60*60*5)
+        time.sleep(60*60*3)
